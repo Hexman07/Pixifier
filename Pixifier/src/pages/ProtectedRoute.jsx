@@ -1,11 +1,12 @@
-import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
+  const navigate = useNavigate();
   const { isLoggedIn } = useSelector((store) => store.pixify);
 
   if (!isLoggedIn) {
-    return <Navigate to="/login" />;
+    navigate('/login');
   }
   return children;
 };
